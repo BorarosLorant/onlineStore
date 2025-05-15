@@ -1,7 +1,9 @@
 <?php
+
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+
 return new class extends Migration
 {
     /**
@@ -11,22 +13,24 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('products', function (Blueprint $table) {
+        Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->text('description');
-            $table->string('image');
-            $table->integer('price');
+            $table->string("email");
+            $table->timestamp("email_verified_at");
+            $table->string("password");
+            $table->string("remember_token");
             $table->timestamps();
         });
     }
+
     /**
      * Reverse the migrations.
-     **
-    @return void
+     *
+     * @return void
      */
     public function down()
     {
-        Schema::dropIfExists('products');
+        Schema::dropIfExists('users');
     }
 };
